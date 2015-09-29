@@ -1,0 +1,30 @@
+.services{
+  @extend %align-center;
+  @include pie-clearfix();
+  width: $ui-width;
+  margin-top: 40px;
+
+  li{
+    @include float(left);
+    @include pie-clearfix();
+    width: 320px;
+
+    img{
+      @include float(left);
+      width: 78px;
+      height: 78px;
+      margin-right: 12px;
+    }
+
+    h1{
+      font-weight: bold;
+      font-size: 1em;
+      line-height: 1.8em;
+    }
+
+    span{
+      font-size: 0.75em;
+      line-height: 1.5em;
+    }
+  }
+}

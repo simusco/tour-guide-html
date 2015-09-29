@@ -1,0 +1,30 @@
+.pagebar{
+  text-align: center;
+  margin-top: 60px;
+
+  @at-root .pagination{
+
+    >li{
+      @include inline-block();
+      margin: 0px 5px;
+
+      >a{
+        @include inline-block();
+        height: 38px;
+        line-height: 38px;
+        padding: 0px 20px;
+        border:1px solid $ui-border-color;
+
+        &.active, &:hover {
+          background-color: $ui-main-color;
+        }
+      }
+    }
+
+    &.first{}
+    &.last{}
+    &.pre{}
+    &.next{}
+
+  }
+}

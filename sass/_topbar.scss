@@ -1,0 +1,49 @@
+.top-line{
+  border:none;
+  border-bottom: 3px solid $ui-main-color;
+}
+
+.topbar{
+  @extend %align-center;
+  width: $ui-width;
+
+  @at-root .topbar-log-icon{
+    height: 84px;
+    width: 560px;
+    background-color: #ffffff;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-image: image-url("index/log.png");
+    @include inline-block();
+  }
+
+  @at-root .topbar-sign{
+    @include inline-block();
+    width: 240px;
+
+    >li{
+      @include horizontal-list-item(0px);
+      text-align: center;
+      height: 84px;
+      line-height: 84px;
+      vertical-align: middle;
+
+      >a{
+        @include inline-block();
+        padding:0px 15px;
+        line-height: 30px;
+
+        &:hover{
+          background-color: $ui-main-color;
+        }
+      }
+    }
+  }
+
+  .contact{
+    @include inline-block();
+    width: 160px;
+    height: 84px;
+    background:#fff image-url("index/contact.png") no-repeat right center;
+  }
+}

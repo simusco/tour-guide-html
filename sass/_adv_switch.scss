@@ -1,0 +1,29 @@
+.adv-screen{
+  background:#fff image-url("index/adv01.png") no-repeat scroll 50% 50%;
+  width: 100%;
+  height: 350px;
+
+  .adv-hack{
+    height: 300px;
+  }
+
+  @at-root .adv-switch{
+    text-align: center;
+
+    > li {
+      margin: 0px 10px;
+      @include border-radius(50%);
+      @include inline-block();
+      @include opacity(0.5);
+
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+
+      &:hover{
+        background: rgba(0,0,0,0.7);
+        cursor: pointer;
+      }
+    }
+  }
+}

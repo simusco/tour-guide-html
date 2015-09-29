@@ -1,0 +1,67 @@
+.tags {
+  @extend %align-center;
+  width: $ui-width;
+  margin-top: 25px;
+
+  @at-root .tag-row {
+    border: 1px solid #f1f1f1;
+    border-top: none;
+
+    > span{
+      @include inline-block();
+      width: 68px;
+      text-align: center;
+      font-weight: bold;
+      line-height: 38px;
+      height: 38px;
+      color: #666;
+    }
+
+    &.first{
+      border: 1px solid #f1f1f1;
+    }
+
+    > span.tag-result{
+      font-weight: normal;
+      width: 100%;
+      text-align: left;
+      text-indent: 10px;
+
+      >b{
+        color: #fe3000;
+      }
+    }
+  }
+
+  @at-root .tag-items {
+    @include inline-block();
+
+    > li {
+      @include inline-block();
+      line-height: 38px;
+
+      > a{
+        @include inline-block();
+        height: 24px;
+        line-height: 24px;
+        padding: 0px 10px;
+        color: #666;
+
+        &.active{
+          background-color: #fe3000;
+          color: #ffffff;
+          font-weight: bold;
+          @include border-radius(3px);
+        }
+      }
+
+      @at-root .tag-items-condition{
+         > a{
+           border: 1px dotted #fe3000;
+           margin: 0px 5px;
+         }
+      }
+    }
+  }
+
+}

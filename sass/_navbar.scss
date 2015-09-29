@@ -1,0 +1,36 @@
+.navbar{
+  width: 100%;
+  background-color: #2e2e2e;
+
+  @at-root .navbar-menu{
+    @extend %align-center;
+    width: $ui-width;
+    height: 45px;
+
+    >li{
+      @include horizontal-list-item(0px);
+
+      >a{
+        @include inline-block();
+        line-height: 45px;
+        width: 238px;
+        text-align: center;
+        border-left: 1px solid #2e2e2e;
+        border-right: 1px solid #2e2e2e;
+        color: #ffffff;
+
+        &.active, &:hover{
+          background-color:$ui-main-color;
+          color: #2e2e2e;
+        }
+      }
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+}

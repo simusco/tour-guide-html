@@ -1,0 +1,11 @@
+.adv-img{
+  @extend %align-center;
+  @include pie-clearfix();
+  width: $ui-width;
+  margin-top: 90px;
+
+  img{
+    height: 90px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/flash-player/swfobject.js"></script>
+
+    <script type="text/javascript">
+
+        var animation = (function(config){
+            var cfg = {
+                duration:100,
+                stayTime:3000,
+                random:true
+            };
+
+            var cfg = $.extend(false,cfg, config);
+
+            function getAnimationElements(){
+                return $("ul[expand-animation=true]");
+            }
+
+            function getHasExpanded(animationElement){
+                return $('li[expand=true]', animationElement);
+            }
+
+            function getExpandWidth(animationItem){
+                return animationItem.width();
+            }
+
+            function expand(animationItem){
+                animationItem.attr("expand","true");
+
+                var width = getExpandWidth(animationItem);
+                var interval = window.setInterval(function(){
+                    if(width > cfg.maxWidth){
+                        window.clearInterval(interval);
+                        animationItem.css('width', cfg.maxWidth + "px");
+                    }else{
+                        animationItem.css('width', width);
+                        width += 20;
+                    }
+                }, cfg.duration);
+            }
+
+            function shrink(animationItem){
+                var width = getExpandWidth(animationItem);
+                var interval = window.setInterval(function(){
+                    if(width > cfg.minWidth){
+                        animationItem.css('width', width);
+                        width -= 20;
+                    }else{
+                        window.clearInterval(interval);
+                        animationItem.css('width', cfg.minWidth + "px");
+                        animationItem.removeAttr("expand");
+                    }
+                }, cfg.duration);
+            }
+
+            return {
+                play:function(){
+                    getAnimationElements().each(function(){
+                        var animationElement = $(this);
+
+                        $('>li', animationElement).each(function(){
+                            var animationItem = $(this);
+
+                            animationItem.click(function(){
+                                getHasExpanded(animationElement).each(function(){shrink($(this))});
+                                expand($(this));
+                                flag = true;
+                            });
+                        });
+                    });
+                },
+                stop:function(){}
+            };
+        })({
+            maxWidth:329,
+            minWidth:104
+        });
+
+        $(function(){
+            $(window).scroll( function() {
+                var scrollTop = $(this).scrollTop(),
+                        fixedbar = $('#fixed-bar');
+                if(scrollTop <= 87){
+                    fixedbar.removeClass('fixed');
+                }else{
+                    fixedbar.addClass('fixed');
+                }
+            });
+
+            animation.play();
+        });
+
+
+    </script>
+
+    <title>首页</title>
+</head>
+<body>
+
+<div class="top-line"></div>
+<div class="topbar">
+    <div class="topbar-log-icon"></div><ul class="topbar-sign">
+        <li><a href="">注册</a></li>
+        <li><a href="">登陆</a></li>
+        <li class="last"><a href="">关于我们</a></a></li>
+    </ul><span class="contact"></span>
+</div>
+<div class="navbar" id="fixed-bar">
+    <ul class="navbar-menu">
+        <li><a href="index.html" class="active">首页</a></li>
+        <li><a href="route.html">路线</a></li>
+        <li><a href="">工具</a></li>
+        <li class="last"><a href="">帮助</a></li>
+    </ul>
+</div>
+<div class="adv-screen">
+    <div class="adv-hack"></div>
+    <ul class="adv-switch">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="topic-title">
+    <h1>当季热门</h1><span><a href="">更多</a></span>
+</div>
+<ul class="topic-hot-content">
+    <li>
+        <div class="topic-content-item first active"><a href=""><img src="images/index/hot01.png"/></a>
+            <h2>Ruby对Unix 环境的需求</h2>
+            <p>Ruby对Unix环境的需求非常高，这点Mac OSX和Linux系列的系统才能很好的满足林大化；</p>
+        </div>
+    </li>
+    <li>
+        <div class="topic-content-item"><a href=""><img src="images/index/hot01.png"/></a>
+            <h2>Ruby对Unix 环境的需求</h2>
+            <p>Ruby对Unix环境的需求非常高，这点Mac OS X和Linux系列的系统才能nux系列的系统才能很好的满足林大化；</p>
+        </div>
+    </li>
+    <li>
+        <div class="topic-content-item last"><a href=""><img src="images/index/hot01.png"/></a>
+            <h2>Ruby对Unix 环境的需求</h2>
+            <p>Ruby对Unix环境的需求非常高，这点Mac OS X和Linux系列nux系列的系统才能很好的满足林大化；</p>
+        </div>
+    </li>
+</ul>
+<div class="topic-title">
+    <h1>个性主题</h1><span><a href="">更多</a></span>
+</div>
+<ul class="topic-special-content" expand-animation="true">
+    <li class="active" expand="true"><a href=""><img src="images/index/special01.png"></a></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li><a href=""><img src="images/index/special01.png"></a></li>
+    <li></li>
+</ul>
+<div class="topic-title">
+    <h1>推荐榜单</h1><span><a href="">更多</a></span>
+</div>
+<ul class="topic-recommend-content">
+    <li>
+        <a href="" class="first">
+            <img src="images/index/rec01.png"/>
+            <h1>环境的需求</h1>
+        </a>
+    </li>
+    <li>
+        <a href="">
+            <img src="images/index/rec01.png"/>
+            <h1>环境的需求</h1>
+        </a>
+    </li>
+    <li>
+        <a href="">
+            <img src="images/index/rec01.png"/>
+            <h1>环境的需求</h1>
+        </a>
+    </li>
+    <li>
+        <a href="" class="last">
+            <img src="images/index/rec01.png"/>
+            <h1>环境的需求</h1>
+        </a>
+    </li>
+</ul>
+
+<div class="reason">
+    <h1>选择到此一游的4大理由</h1>
+    <table class="content">
+        <tr>
+            <td class="content-img"><img src="images/index/reason_001.png"/></td>
+            <td class="content-desc">
+                <h1>专业客服服务</h1>
+                激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.
+            </td>
+            <td class="content-img"><img src="images/index/reason_001.png"/></td>
+            <td class="content-desc">
+                <h1>专业客服服务</h1>
+                激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.
+            </td>
+            <td rowspan="2" class="reason-media">
+                <div class="reason-media-video" id="CuPlayer">
+                    <script type="text/javascript">
+                        var so = new SWFObject("scripts/flash-player/flash.swf","CuPlayerVM2","268","190","9","#000000");
+                        so.addParam("allowfullscreen","true");
+                        so.addParam("allowscriptaccess","always");
+                        so.addParam("wmode","opaque");
+                        so.addParam("quality","high");
+                        so.addParam("salign","lt");
+                        so.addVariable("video_file","http://admin.geely.com/upload/201304/586d9cecdddd9b512990eeb5150f5b57.flv"); //视频文件地址
+                        so.addVariable("playbtn_scale","1"); //播放按钮缩放
+                        so.addVariable("auto_play","no"); //是否自动播放
+                        so.addVariable("clock_display","yes");
+                        so.addVariable("fullscreen_display","y"); //是否允许全屏
+                        so.write("CuPlayer");
+                    </script>
+                </div>
+                <h1 class="reason-media-title">公司介绍</h1>
+            </td>
+        </tr>
+        <tr>
+            <td class="content-img"><img src="images/index/reason_001.png"/></td>
+            <td class="content-desc">
+                <h1>专业客服服务</h1>
+                激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.
+            </td>
+            <td class="content-img"><img src="images/index/reason_001.png"/></td>
+            <td class="content-desc">
+                <h1>专业客服服务</h1>
+                激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="adv-img">
+    <img src="images/index/card-001.jpg"/>
+</div>
+
+<ul class="services">
+    <li>
+        <img src="images/index/service_01.png"/>
+        <h1>专业客服服务</h1>
+        <span>激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.</span>
+    </li>
+    <li>
+        <img src="images/index/service_02.png"/>
+        <h1>专业客服服务</h1>
+        <span>激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.</span>
+    </li>
+    <li>
+        <img src="images/index/service_03.png"/>
+        <h1>专业客服服务</h1>
+        <span>激光对抗系统射程超过400米，战绩，损伤可自动统计.</span>
+    </li>
+</ul>
+
+<div class="footer">
+    <ul class="about">
+        <li><a href="">关于我们</a></li>
+        <li><a href="">加入我们</a></li>
+        <li><a href="">帮助中心</a></li>
+        <li class="last"><a href="">联系我们</a></li>
+    </ul>
+    <span class="copyright">copyright©2014-2015 团建宝版权所有 京ICP备14017744号-5</span>
+</div>
+
+</body>
+</html>
