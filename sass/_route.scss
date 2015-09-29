@@ -1,0 +1,78 @@
+.route{
+  @extend %align-center;
+  margin-top: 30px;
+  position: relative;
+  border: 1px solid $ui-border-color;
+  width: $ui-width;
+
+  @at-root .route-content{
+    width: $ui-width - 20px;
+    margin: 10px auto;
+
+    > img {
+      width: 550px;
+      @include inline-block();
+    }
+
+    @at-root .route-content-desc{
+      @include inline-block();
+      width: 366px;
+      height: 314px;
+      margin-left: 20px;;
+
+      > h1{
+        font-weight: bold;
+        color: #666;
+        font-size: 22px;
+        line-height: 36px;
+        @include ellipsis(true);
+      }
+
+      >h2{
+        font-size: 18px;
+        color: #999;
+      }
+
+      @at-root .route-content-ul{
+        margin-top: 30px;
+
+        li{
+          @include inline-block();
+
+          >i{
+            @include inline-block();
+            @include border-radius(3px);
+            margin: 0px 5px;
+            padding: 0px 10px;
+            line-height: 24px;
+            height: 24px;
+            background-color: #fe3000;
+            color: #ffffff;
+            font-weight: bold;
+          }
+
+          >b{
+            color: #fe3000;
+          }
+        }
+      }
+    }
+  }
+
+  &:hover{
+    border: 1px solid $ui-main-color;
+  }
+}
+
+.ul-table{
+  display: table;
+
+  >ul{
+    display: table-row;
+
+    >li{
+      display: table-cell;
+      line-height: 36px;
+    }
+  }
+}
