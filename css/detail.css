@@ -71,7 +71,16 @@ body a {
   width: 100%;
 }
 
-.topbar, .navbar-menu, .adv-img, .services, .route-wraper {
+.btn {
+  padding: 10px 20px;
+  border: none;
+}
+
+b {
+  font-weight: 700;
+}
+
+.topbar, .navbar-menu, .adv-img, .services, .route-wraper, .ticket-group, .div-tab {
   margin-left: auto;
   margin-right: auto;
 }
@@ -331,6 +340,7 @@ body a {
   width: 100%;
 }
 .route-wraper-header > h2 {
+  padding-left: 10px;
   font-size: 18px;
   line-height: 36px;
 }
@@ -408,13 +418,14 @@ body a {
   overflow: hidden;
   width: 104px;
   height: 66px;
+  border: 1px solid #ffffff;
 }
 .route-wraper-content-left .img-nav .image-nav-btn > li > a img {
   width: 100%;
   height: 100%;
 }
-.route-wraper-content-left .img-nav .image-nav-btn > li > a.active {
-  border: 1px solid #ffd400;
+.route-wraper-content-left .img-nav .image-nav-btn > li > a.active, .route-wraper-content-left .img-nav .image-nav-btn > li > a:hover {
+  border: 1px solid #fe3000;
 }
 .route-wraper-content-right {
   float: right;
@@ -462,4 +473,126 @@ body a {
   background-color: #fe3000;
   color: #ffffff;
   font-weight: bold;
+}
+
+.ticket-group {
+  width: 960px;
+  margin-top: 30px;
+  border: 1px solid #f2f2f2;
+  border-bottom: none;
+}
+.ticket-group-title {
+  border-bottom: 1px solid #f2f2f2;
+}
+.ticket-group-title > h2 {
+  font-size: 16px;
+  color: #333333;
+  line-height: 50px;
+  height: 50px;
+  padding-left: 10px;
+}
+.ticket-group-content ul.ticket {
+  height: 120px;
+  width: 100%;
+  border-bottom: 1px dashed #f2f2f2;
+}
+.ticket-group-content ul.ticket li {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  text-align: center;
+}
+.ticket-group-content ul.ticket li.ticket-icon {
+  width: 20%;
+  line-height: 0px;
+  vertical-align: middle;
+  height: 120px;
+}
+.ticket-group-content ul.ticket li.ticket-icon > img {
+  float: left;
+  width: 90%;
+  height: 80%;
+  margin: 10px;
+}
+.ticket-group-content ul.ticket li.ticket-name {
+  width: 36%;
+  text-align: left;
+}
+.ticket-group-content ul.ticket li.ticket-name h2 {
+  font-size: 18px;
+  line-height: 24px;
+}
+.ticket-group-content ul.ticket li.ticket-name p {
+  font-size: 14px;
+  color: #999;
+  line-height: 18px;
+}
+.ticket-group-content ul.ticket li.ticket-price {
+  width: 10%;
+  font-size: 24px;
+  color: #fe3000;
+  font-weight: 700;
+}
+.ticket-group-content ul.ticket li.ticket-market-price {
+  width: 14%;
+  color: #999;
+}
+.ticket-group-content ul.ticket li.ticket-btn {
+  width: 10%;
+}
+.ticket-group-content ul.ticket li.ticket-btn > .btn-book {
+  background-color: #fe3000;
+  color: #fff;
+  font-size: 16px;
+}
+.ticket-group-content ul.ticket li.ticket-btn > .btn-book:hover {
+  background-color: rgba(254, 48, 0, 0.6);
+}
+
+.div-tab {
+  width: 960px;
+  margin-top: 30px;
+  border: 1px solid #f2f2f2;
+}
+.div-tab-title {
+  margin: 0px auto;
+  width: 100%;
+  background-color: #2e2e2e;
+}
+.div-tab-title > li {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  height: 55px;
+  width: 33.33333%;
+  line-height: 55px;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+}
+.div-tab-title > li.active, .div-tab-title > li:hover {
+  background-color: #fed330;
+}
+.div-tab-content > h2 {
+  line-height: 60px;
+  height: 60px;
+  padding-left: 60px;
+  font-size: 18px;
+}
+.div-tab-content > .content-wraper {
+  border-top: 1px solid #f2f2f2;
+}
+.div-tab-content > .content-wraper .content {
+  margin: 0px auto;
+  line-height: 36px;
+  font-size: 16px;
+  width: 95%;
+  color: #666;
+}
+.div-tab-content > .content-wraper .content p {
+  text-indent: 20px;
 }

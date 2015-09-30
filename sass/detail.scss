@@ -22,6 +22,7 @@
     width: 100%;
 
     > h2{
+      padding-left: 10px;
       font-size: 18px;
       line-height: 36px;
     }
@@ -96,14 +97,15 @@
               overflow: hidden;
               width: 104px;
               height: 66px;
+              border:1px solid #ffffff;
 
               img{
                 width: 100%;
                 height: 100%;
               }
 
-              &.active{
-                border:1px solid $ui-main-color;
+              &.active,&:hover{
+                border:1px solid #fe3000;
               }
             }
 
@@ -160,3 +162,164 @@
   }
 
 }
+
+
+
+.ticket-group{
+  @extend %align-center;
+  width: $ui-width;
+  margin-top: 30px;
+  border: 1px solid $ui-border-color;
+  border-bottom: none;
+
+  @at-root .ticket-group-title{
+    border-bottom: 1px solid $ui-border-color;
+
+    >h2{
+      font-size: 16px;
+      color: #333333;
+      line-height: 50px;
+      height: 50px;
+      padding-left: 10px;
+    }
+  }
+
+  @at-root .ticket-group-content{
+    ul.ticket{
+      height: 120px;
+      width: 100%;
+      border-bottom: 1px dashed $ui-border-color;
+
+      li{
+        @include inline-block();
+        text-align: center;
+
+        &.ticket-icon{
+          width: 20%;
+          line-height: 0px;
+          vertical-align: middle;
+          height: 120px;
+
+          > img{
+            @include float(left);
+            width: 90%;
+            height: 80%;
+            margin: 10px;
+          }
+        }
+
+        &.ticket-name{
+          width: 36%;
+          text-align: left;
+
+          h2{
+            font-size: 18px;
+            line-height: 24px;
+          }
+
+          p{
+            font-size: 14px;
+            color: #999;
+            line-height: 18px;
+          }
+        }
+
+        &.ticket-price{
+          width: 10%;
+          font-size: 24px;
+          color: #fe3000;
+          font-weight: 700;
+        }
+
+        &.ticket-market-price{
+          width: 14%;
+          color: #999;
+        }
+
+        &.ticket-btn{
+          width: 10%;
+
+          > .btn-book{
+            background-color: #fe3000;
+            color: #fff;
+            font-size: 16px;
+
+            &:hover{
+              background-color: rgba(#fe3000, 0.6);
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+
+.div-tab{
+  @extend %align-center;
+  width: $ui-width;
+  margin-top: 30px;
+  border: 1px solid $ui-border-color;
+
+  @at-root .div-tab-title{
+    margin: 0px auto;
+    width: 100%;
+    background-color: #2e2e2e;
+
+    >li{
+      @include inline-block();
+      height: 55px;
+      width: 33.33333%;
+      line-height: 55px;
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+
+      &.active, &:hover{
+        background-color:#fed330;
+      }
+    }
+  }
+
+  @at-root .div-tab-content{
+    > h2 {
+      line-height: 60px;
+      height: 60px;
+      padding-left: 60px;
+      font-size: 18px;
+    }
+
+    > .content-wraper{
+      border-top: 1px solid $ui-border-color;
+
+      .content{
+        margin: 0px auto;
+        line-height: 36px;
+        font-size: 16px;
+        width: 95%;
+        color: #666;
+
+        p{
+          text-indent: 20px;
+        }
+
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

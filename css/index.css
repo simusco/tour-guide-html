@@ -71,6 +71,15 @@ body a {
   width: 100%;
 }
 
+.btn {
+  padding: 10px 20px;
+  border: none;
+}
+
+b {
+  font-weight: 700;
+}
+
 .topbar, .navbar-menu, .adv-img, .services, .reason, .topic-title, .topic-hot-content, .topic-special-content, .topic-recommend-content {
   margin-left: auto;
   margin-right: auto;
