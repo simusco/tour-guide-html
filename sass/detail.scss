@@ -270,14 +270,16 @@
     >li{
       @include inline-block();
       height: 55px;
-      width: 33.33333%;
+      width: 33.2%;
       line-height: 55px;
       text-align: center;
       color: #fff;
       font-size: 18px;
+      border-left: 1px solid #2e2e2e;
 
       &.active, &:hover{
         background-color:#fed330;
+        border-left: 1px solid #2e2e2e;
       }
     }
   }

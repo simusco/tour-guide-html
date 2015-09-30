@@ -568,14 +568,16 @@ b {
   *zoom: 1;
   *display: inline;
   height: 55px;
-  width: 33.33333%;
+  width: 33.2%;
   line-height: 55px;
   text-align: center;
   color: #fff;
   font-size: 18px;
+  border-left: 1px solid #2e2e2e;
 }
 .div-tab-title > li.active, .div-tab-title > li:hover {
   background-color: #fed330;
+  border-left: 1px solid #2e2e2e;
 }
 .div-tab-content > h2 {
   line-height: 60px;
