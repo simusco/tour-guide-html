@@ -80,7 +80,7 @@ b {
   font-weight: 700;
 }
 
-.topbar, .navbar-menu, .adv-img, .services, .route-wraper, .ticket-group, .div-tab {
+.topbar, .navbar-menu, .adv-img, .services, .route-wraper, .ticket-group, .div-tab, .desc, .desc-content, .price-plan {
   margin-left: auto;
   margin-right: auto;
 }
@@ -597,4 +597,89 @@ b {
 }
 .div-tab-content > .content-wraper .content p {
   text-indent: 20px;
+}
+
+.desc {
+  width: 960px;
+  margin-top: 30px;
+  border: 1px solid #f2f2f2;
+}
+.desc-title {
+  line-height: 50px;
+  height: 50px;
+  padding-left: 60px;
+}
+.desc-content {
+  width: 95%;
+}
+.desc-content-img {
+  border: 1px solid #f2f2f2;
+  text-align: center;
+  padding: 1% 0px;
+}
+.desc-content-img > img {
+  max-width: 98%;
+  height: auto;
+}
+.desc-content-img-detail > p {
+  line-height: 36px;
+}
+
+.price-plan {
+  width: 960px;
+  margin-top: 30px;
+}
+.price-plan > .plan-title {
+  height: 36px;
+}
+.price-plan > .plan-title > b {
+  height: 36px;
+  line-height: 36px;
+  vertical-align: top;
+}
+.price-plan > .plan-content {
+  background-color: #f0f0f0;
+}
+.price-plan > .plan-content li {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  width: 87px;
+}
+.price-plan > .plan-content li > .day {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+.price-plan > .plan-content li .date-price-wraper {
+  width: 100%;
+  height: 78px;
+  border: 1px solid #dfdfdf;
+  background-color: #fff;
+  position: relative;
+}
+.price-plan > .plan-content li .date-price-wraper > .date {
+  display: block;
+  line-height: 20px;
+  font-size: 12px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.price-plan > .plan-content li .date-price-wraper > .price {
+  display: block;
+  line-height: 20px;
+  font-size: 12px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: #fe3000;
 }

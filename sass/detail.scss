@@ -311,9 +311,102 @@
   }
 }
 
+.desc{
+  @extend %align-center;
+  width: $ui-width;
+  margin-top: 30px;
+  border: 1px solid $ui-border-color;
 
+  @at-root .desc-title{
+    line-height: 50px;
+    height: 50px;
+    padding-left: 60px;
+  }
 
+  @at-root .desc-content{
+    @extend %align-center;
+    width: 95%;
 
+    @at-root .desc-content-img{
+      border: 1px solid $ui-border-color;
+      text-align: center;
+      padding: 1% 0px;
+
+      >img{
+        max-width: 98%;
+        height: auto;
+      }
+    }
+
+    @at-root .desc-content-img-detail{
+      > p{
+        line-height: 36px;
+      }
+    }
+
+  }
+}
+
+.price-plan{
+  @extend %align-center;
+  width: $ui-width;
+  margin-top: 30px;
+
+  > .plan-title{
+    height: 36px;
+
+    >b{
+      height: 36px;
+      line-height: 36px;
+      vertical-align: top;
+    }
+  }
+
+  > .plan-content{
+    background-color: #f0f0f0;
+
+    li{
+      @include inline-block();
+      width: 87px;
+
+      > .day{
+        @include inline-block();
+        width: 100%;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+      }
+
+      .date-price-wraper{
+        width: 100%;
+        height: 78px;
+        border: 1px solid #dfdfdf;
+        background-color: #fff;
+        position: relative;
+
+        > .date{
+            display: block;
+            line-height: 20px;
+            font-size: 12px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        > .price{
+          display: block;
+          line-height: 20px;
+          font-size: 12px;
+          position: absolute;
+          right: 5px;
+          bottom: 5px;
+          color: #fe3000;
+        }
+      }
+    }
+  }
+
+}
 
 
 
