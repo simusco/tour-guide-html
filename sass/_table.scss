@@ -1,0 +1,12 @@
+.ul-table{
+  display: table;
+
+  >ul{
+    display: table-row;
+
+    >li{
+      display: table-cell;
+      line-height: 36px;
+    }
+  }
+}

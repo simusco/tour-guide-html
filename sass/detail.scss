@@ -1,0 +1,162 @@
+@import "compass/support";
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities";
+@import "compass/typography";
+@import "960/grid";
+
+@import
+"base", "mixin", "variable",
+"topbar", "navbar",
+"foo_img", "service", "footer",
+"table";
+
+.route-wraper{
+  @extend %align-center;
+  width: $ui-width;
+  margin-top: 30px;
+  border: 1px solid $ui-border-color;
+
+  @at-root .route-wraper-header{
+    height: 36px;
+    width: 100%;
+
+    > h2{
+      font-size: 18px;
+      line-height: 36px;
+    }
+  }
+
+  @at-root .route-wraper-content{
+    width: 100%;
+    @include pie-clearfix();
+
+    @at-root .route-wraper-content-left{
+      @include float(left);
+      width: 550px;
+      display:inline;
+
+      .img-screen{
+        width: 100%;
+        height: 314px;
+
+        >img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .img-nav{
+        font-size: 0px;
+        position: relative;
+        margin: 10px 0px;
+
+        .img-nav-left-btn,.img-nav-right-btn{
+          position: absolute;
+          z-index: 10;
+          a{
+            display: block;
+            width: 24px;
+            height: 66px;
+          }
+        }
+
+        .img-nav-left-btn{
+          left: 0px;
+          top: 0px;
+          a {
+            background: #fff image-url("detail/left_btn.jpg")  no-repeat center center;
+          }
+        }
+
+        .img-nav-right-btn{
+          right: 0px;
+          top: 0px;
+          a {
+            background: #fff image-url("detail/right_btn.jpg") no-repeat center center;
+          }
+        }
+
+        .image-nav-btn{
+          @include pie-clearfix();
+          margin-left: 24px;
+          overflow: hidden;
+          position: relative;
+          width: 500px;
+          height: 66px;
+
+          > li{
+            position: relative;
+            display: inline;
+            float: left;
+            margin-right: 10px;
+
+            >a{
+              display: block;
+              overflow: hidden;
+              width: 104px;
+              height: 66px;
+
+              img{
+                width: 100%;
+                height: 100%;
+              }
+
+              &.active{
+                border:1px solid $ui-main-color;
+              }
+            }
+
+          }
+        }
+      }
+
+    }
+
+    @at-root .route-wraper-content-right{
+      @include float(right);
+      width: 390px;
+      display:inline;
+
+      .right-content-top{
+        margin-bottom: 20px;
+
+        h1{
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 36px;
+        }
+
+        h2{
+          font-size: 18px;
+          color: #999999;
+        }
+      }
+
+      .right-content{
+        margin-top: 20px;
+
+        li {
+          @include inline-block();
+
+          b{
+            color: #fe3000;
+          }
+
+          i{
+            @include inline-block();
+            @include border-radius(3px);
+            margin: 0px 5px;
+            padding: 0px 10px;
+            line-height: 24px;
+            height: 24px;
+            background-color: #fe3000;
+            color: #ffffff;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+}
