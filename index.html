@@ -28,7 +28,7 @@
 
             //展开对象
             function Expander(e){
-                var no = 'expander_' +  new Date().getTime() + Math.random(100);
+                var no = 'expander_' +  parseInt(1000000*Math.random());
                 this.no = no;
                 e.attr('no', this.no);
 
@@ -166,7 +166,7 @@
                     }
                 };
 
-                var stopAll = function(){
+                this.stopAll = function(){
                     for(var i=0;i<expandings.length;i++){
                         var expander = expandings[i];
 
@@ -175,7 +175,7 @@
                 };
 
                 this.oneByOneShrink = function(){
-                    stopAll();//大家不要动
+                    //this.stopAll();//大家不要动
                     expandings = [];
 
                     for(var i=0;i<members.length;i++){
@@ -203,9 +203,9 @@
             function Monitor(clazz){
 
                 //上级给班长下达执行命令
-                this.expand = function(expander){
+                this.expand = function(expander, fn){
                     clazz.oneByOneShrink();
-                    expander.expand();
+                    expander.expand(fn);
                 }
 
                 var _freeArrange = function(){
@@ -221,7 +221,7 @@
                         var t = window.setTimeout(function(){
                             _freeArrange();
                             window.clearTimeout(t);
-                        }, 2000);
+                        }, 1000);
                     });
                 }
 
@@ -241,14 +241,15 @@
                         clazz.addExpander(animationItem);
 
                         /*
-                        animationItem.mouseover(function(){
+                        animationItem.click(function(){
                             var o = $(this);
                             var expander = clazz.getExpander(o);
 
-                            if(expander != null)
-                                monitor.expand(expander);
-                        });
-                        */
+                            if(expander != null) {
+                                clazz.stopAll();
+                                monitor.expand(expander,function(){});
+                            }
+                        });*/
                     });
 
                     monitor.freeArrange();
@@ -256,7 +257,7 @@
                 stop:function(){}
             };
         })({
-            maxWidth:329,
+            maxWidth:320,
             minWidth:104
         });
 
@@ -312,20 +313,23 @@
 <ul class="topic-hot-content">
     <li>
         <div class="topic-content-item first active"><a href=""><img src="images/index/hot01.png"/></a>
-            <h2>Ruby对Unix 环境的需求</h2>
-            <p>Ruby对Unix环境的需求非常高，这点Mac OSX和Linux系列的系统才能很好的满足林大化；</p>
+            <h2>广州直飞塞班岛</h2>
+            <p>大陆居民赴台湾自由行日前开放第四批试点城市，太原、漳州、温州、哈尔滨、大连等10个城市入选。</p>
+            <span><b>$80元</b>起</span>
         </div>
     </li>
     <li>
         <div class="topic-content-item"><a href=""><img src="images/index/hot01.png"/></a>
-            <h2>Ruby对Unix 环境的需求</h2>
-            <p>Ruby对Unix环境的需求非常高，这点Mac OS X和Linux系列的系统才能nux系列的系统才能很好的满足林大化；</p>
+            <h2>三亚旅游</h2>
+            <p>只需要4个多小时即可从广州白云机场到达塞班岛机场，此行程特别适合第一次去塞班岛的你，还在犹豫吗，速度报名吧</p>
+            <span><b>$80元</b>起</span>
         </div>
     </li>
     <li>
         <div class="topic-content-item last"><a href=""><img src="images/index/hot01.png"/></a>
-            <h2>Ruby对Unix 环境的需求</h2>
-            <p>Ruby对Unix环境的需求非常高，这点Mac OS X和Linux系列nux系列的系统才能很好的满足林大化；</p>
+            <h2>晚五星红树林王国</h2>
+            <p>其实台湾没有很繁华，看起来比不上上海现代化，也比不上北京气派，属于它的更多是生活气息。</p>
+            <span><b>$80元</b>起</span>
         </div>
     </li>
 </ul>
@@ -348,25 +352,25 @@
     <li>
         <a href="" class="first">
             <img src="images/index/rec01.png"/>
-            <h1>环境的需求</h1>
+            <h1>深圳中秋5大自家有好去处</h1>
         </a>
     </li>
     <li>
         <a href="">
             <img src="images/index/rec01.png"/>
-            <h1>环境的需求</h1>
+            <h1>成都最好玩的地方</h1>
         </a>
     </li>
     <li>
         <a href="">
             <img src="images/index/rec01.png"/>
-            <h1>环境的需求</h1>
+            <h1>国庆最适合情侣去的地方</h1>
         </a>
     </li>
     <li>
         <a href="" class="last">
             <img src="images/index/rec01.png"/>
-            <h1>环境的需求</h1>
+            <h1>周边最优推荐去处</h1>
         </a>
     </li>
 </ul>
@@ -377,12 +381,12 @@
         <tr>
             <td class="content-img"><img src="images/index/reason_001.png"/></td>
             <td class="content-desc">
-                <h1>专业客服服务</h1>
+                <h1>专业的线路</h1>
                 激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.
             </td>
             <td class="content-img"><img src="images/index/reason_001.png"/></td>
             <td class="content-desc">
-                <h1>专业客服服务</h1>
+                <h1>全程服务</h1>
                 激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.
             </td>
             <td rowspan="2" class="reason-media">
@@ -408,12 +412,12 @@
         <tr>
             <td class="content-img"><img src="images/index/reason_001.png"/></td>
             <td class="content-desc">
-                <h1>专业客服服务</h1>
+                <h1>智能导游</h1>
                 激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.
             </td>
             <td class="content-img"><img src="images/index/reason_001.png"/></td>
             <td class="content-desc">
-                <h1>专业客服服务</h1>
+                <h1>最优价格</h1>
                 激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.
             </td>
         </tr>
@@ -427,17 +431,17 @@
 <ul class="services">
     <li>
         <img src="images/index/service_01.png"/>
-        <h1>专业客服服务</h1>
+        <h1>专业</h1>
         <span>激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.</span>
     </li>
     <li>
         <img src="images/index/service_02.png"/>
-        <h1>专业客服服务</h1>
+        <h1>智能服务</h1>
         <span>激光对抗系统射程超过400米，战绩，损伤可自动统计，战斗时间.</span>
     </li>
     <li>
         <img src="images/index/service_03.png"/>
-        <h1>专业客服服务</h1>
+        <h1>价格便宜</h1>
         <span>激光对抗系统射程超过400米，战绩，损伤可自动统计.</span>
     </li>
 </ul>

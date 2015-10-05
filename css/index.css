@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -58,7 +57,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   box-sizing: border-box;
   min-width: 1004px;
-  font-family: "Hiragino Sans GB","microsoft yahei","Tahoma,arial","宋体","sans-serif";
 }
 body a {
   text-decoration: none;
@@ -455,7 +453,7 @@ b {
   padding-left: 0px;
   padding-right: 0px;
   width: 320px;
-  height: 360px;
+  height: 372px;
   text-align: center;
 }
 .topic-hot-content > li:first-child {
@@ -471,7 +469,7 @@ b {
   margin-left: auto;
   margin-right: auto;
   width: 300px;
-  height: 354px;
+  height: 368px;
   border: 1px solid #f2f2f2;
   white-space: normal;
 }
@@ -498,15 +496,36 @@ b {
   width: 100%;
 }
 .topic-content-item > h2 {
-  font-weight: bold;
+  font-weight: 700;
   line-height: 36px;
+  font-size: 16px;
+  color: #333333;
 }
 .topic-content-item > p {
   text-align: justify;
   line-height: 24px;
   padding: 0px 10px;
-  color: #999999;
+  color: #666666;
   word-break: break-all;
+  font-size: 14px;
+}
+.topic-content-item > span {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  font-weight: 700;
+  height: 36px;
+  line-height: 36px;
+  width: 90%;
+  text-align: right;
+  font-size: 14px;
+  color: #999;
+}
+.topic-content-item > span > b {
+  color: #fe3000;
+  font-size: 18px;
 }
 
 .topic-special-content {
@@ -521,28 +540,13 @@ b {
   clear: both;
 }
 .topic-special-content > li {
-  list-style-image: none;
-  list-style-type: none;
-  margin-left: 0;
-  white-space: nowrap;
   float: left;
-  padding-left: 0px;
-  padding-right: 0px;
   width: 104px;
   height: 360px;
   text-align: center;
   background-color: red;
   border-left: 1px solid #fff;
   overflow: hidden;
-}
-.topic-special-content > li:first-child {
-  padding-left: 0;
-}
-.topic-special-content > li:last-child {
-  padding-right: 0;
-}
-.topic-special-content > li.last {
-  padding-right: 0;
 }
 .topic-special-content > li > a {
   display: inline-block;
@@ -552,7 +556,7 @@ b {
   *display: inline;
 }
 .topic-special-content > li.active {
-  width: 329px;
+  width: 320px;
   background-color: yellow;
 }
 

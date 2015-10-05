@@ -80,7 +80,7 @@
 
         .image-nav-btn{
           @include pie-clearfix();
-          margin-left: 22px;
+          margin-left: 32px;
           overflow: hidden;
           position: relative;
           width: 500px;
@@ -95,7 +95,7 @@
             >a{
               display: block;
               overflow: hidden;
-              width: 104px;
+              width: 112px;
               height: 66px;
               border:1px solid #ffffff;
 
@@ -130,8 +130,9 @@
         }
 
         h2{
-          font-size: 18px;
+          font-size: 14px;
           color: #999999;
+          line-height: 18px;
         }
       }
 
@@ -213,7 +214,6 @@
           text-align: left;
 
           h2{
-            font-size: 18px;
             line-height: 22px;
           }
 
@@ -237,7 +237,7 @@
         }
 
         &.ticket-btn{
-          width: 10%;
+          width: 16%;
 
           > .btn-book{
             background-color: #fe3000;
@@ -260,7 +260,7 @@
   @extend %align-center;
   width: $ui-width;
   margin-top: 30px;
-  border: 1px solid $ui-border-color;
+  //border: 1px solid $ui-border-color;
 
   @at-root .div-tab-title{
     margin: 0px auto;
@@ -293,57 +293,34 @@
     }
 
     > .content-wraper{
-      border-top: 1px solid $ui-border-color;
+      border-top: 1px dashed $ui-border-color;
 
-      .content{
-        margin: 0px auto;
-        line-height: 36px;
-        font-size: 16px;
-        width: 95%;
-        color: #666;
+      .detail-desc-item{
+        padding: 20px;
+        word-wrap: break-word;
 
-        p{
-          text-indent: 20px;
+        .operate, .sub-operate{
+          font-size: 14px;
+          margin-bottom: 10px;
+          line-height: 14px;
         }
 
+        .operate{
+          font-weight: 900;
+        }
+
+        .detail{
+          font-size: 14px;
+          line-height: 24px;
+
+          > img{
+            max-width: 100%;
+            border-bottom: 3px solid #fed330
+          }
+        }
       }
+
     }
-  }
-}
-
-.desc{
-  @extend %align-center;
-  width: $ui-width;
-  margin-top: 30px;
-  border: 1px solid $ui-border-color;
-
-  @at-root .desc-title{
-    line-height: 50px;
-    height: 50px;
-    padding-left: 60px;
-  }
-
-  @at-root .desc-content{
-    @extend %align-center;
-    width: 95%;
-
-    @at-root .desc-content-img{
-      border: 1px solid $ui-border-color;
-      text-align: center;
-      padding: 1% 0px;
-
-      >img{
-        max-width: 98%;
-        height: auto;
-      }
-    }
-
-    @at-root .desc-content-img-detail{
-      > p{
-        line-height: 36px;
-      }
-    }
-
   }
 }
 
@@ -353,12 +330,31 @@
   margin-top: 30px;
 
   > .plan-title{
-    height: 36px;
+    position: relative;
 
-    >b{
+    > span{
+      @include inline-block();
+      width: 20px;
+      background-color: red;
+      height: 36px;
+      line-height: 36px;
+    }
+
+    > b{
+      @include inline-block();
       height: 36px;
       line-height: 36px;
       vertical-align: top;
+      width: 900px;
+      padding-left: 20px;
+    }
+
+    .left-btn{
+      background:#fff image-url("detail/detail_left_btn.png") no-repeat center center;
+    }
+
+    .right-btn{
+      background:#fff image-url("detail/detail_right_btn.png") no-repeat  center center;
     }
   }
 

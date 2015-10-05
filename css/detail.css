@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -58,7 +57,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   box-sizing: border-box;
   min-width: 1004px;
-  font-family: "Hiragino Sans GB","microsoft yahei","Tahoma,arial","宋体","sans-serif";
 }
 body a {
   text-decoration: none;
@@ -80,7 +78,7 @@ b {
   font-weight: 700;
 }
 
-.topbar, .navbar-menu, .adv-img, .services, .route-wraper, .ticket-group, .div-tab, .desc, .desc-content, .price-plan {
+.topbar, .navbar-menu, .adv-img, .services, .route-wraper, .ticket-group, .div-tab, .price-plan {
   margin-left: auto;
   margin-right: auto;
 }
@@ -396,7 +394,7 @@ b {
 }
 .route-wraper-content-left .img-nav .image-nav-btn {
   *zoom: 1;
-  margin-left: 22px;
+  margin-left: 32px;
   overflow: hidden;
   position: relative;
   width: 500px;
@@ -416,7 +414,7 @@ b {
 .route-wraper-content-left .img-nav .image-nav-btn > li > a {
   display: block;
   overflow: hidden;
-  width: 104px;
+  width: 112px;
   height: 66px;
   border: 1px solid #ffffff;
 }
@@ -441,8 +439,9 @@ b {
   line-height: 36px;
 }
 .route-wraper-content-right .right-content-top h2 {
-  font-size: 18px;
+  font-size: 14px;
   color: #999999;
+  line-height: 18px;
 }
 .route-wraper-content-right .right-content {
   margin-top: 20px;
@@ -521,7 +520,6 @@ b {
   text-align: left;
 }
 .ticket-group-content ul.ticket li.ticket-name h2 {
-  font-size: 18px;
   line-height: 22px;
 }
 .ticket-group-content ul.ticket li.ticket-name p {
@@ -540,7 +538,7 @@ b {
   color: #999;
 }
 .ticket-group-content ul.ticket li.ticket-btn {
-  width: 10%;
+  width: 16%;
 }
 .ticket-group-content ul.ticket li.ticket-btn > .btn-book {
   background-color: #fe3000;
@@ -554,7 +552,6 @@ b {
 .div-tab {
   width: 960px;
   margin-top: 30px;
-  border: 1px solid #f2f2f2;
 }
 .div-tab-title {
   margin: 0px auto;
@@ -586,43 +583,27 @@ b {
   font-size: 18px;
 }
 .div-tab-content > .content-wraper {
-  border-top: 1px solid #f2f2f2;
+  border-top: 1px dashed #f2f2f2;
 }
-.div-tab-content > .content-wraper .content {
-  margin: 0px auto;
-  line-height: 36px;
-  font-size: 16px;
-  width: 95%;
-  color: #666;
+.div-tab-content > .content-wraper .detail-desc-item {
+  padding: 20px;
+  word-wrap: break-word;
 }
-.div-tab-content > .content-wraper .content p {
-  text-indent: 20px;
+.div-tab-content > .content-wraper .detail-desc-item .operate, .div-tab-content > .content-wraper .detail-desc-item .sub-operate {
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 14px;
 }
-
-.desc {
-  width: 960px;
-  margin-top: 30px;
-  border: 1px solid #f2f2f2;
+.div-tab-content > .content-wraper .detail-desc-item .operate {
+  font-weight: 900;
 }
-.desc-title {
-  line-height: 50px;
-  height: 50px;
-  padding-left: 60px;
+.div-tab-content > .content-wraper .detail-desc-item .detail {
+  font-size: 14px;
+  line-height: 24px;
 }
-.desc-content {
-  width: 95%;
-}
-.desc-content-img {
-  border: 1px solid #f2f2f2;
-  text-align: center;
-  padding: 1% 0px;
-}
-.desc-content-img > img {
-  max-width: 98%;
-  height: auto;
-}
-.desc-content-img-detail > p {
-  line-height: 36px;
+.div-tab-content > .content-wraper .detail-desc-item .detail > img {
+  max-width: 100%;
+  border-bottom: 3px solid #fed330;
 }
 
 .price-plan {
@@ -630,12 +611,36 @@ b {
   margin-top: 30px;
 }
 .price-plan > .plan-title {
+  position: relative;
+}
+.price-plan > .plan-title > span {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  width: 20px;
+  background-color: red;
   height: 36px;
+  line-height: 36px;
 }
 .price-plan > .plan-title > b {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
   height: 36px;
   line-height: 36px;
   vertical-align: top;
+  width: 900px;
+  padding-left: 20px;
+}
+.price-plan > .plan-title .left-btn {
+  background: #fff url('../images/detail/detail_left_btn.png?1444036538') no-repeat center center;
+}
+.price-plan > .plan-title .right-btn {
+  background: #fff url('../images/detail/detail_right_btn.png?1444036538') no-repeat center center;
 }
 .price-plan > .plan-content {
   background-color: #f0f0f0;
