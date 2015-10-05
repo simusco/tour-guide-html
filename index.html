@@ -10,69 +10,248 @@
 
         var animation = (function(config){
             var cfg = {
-                duration:100,
+                duration:1,
                 stayTime:3000,
-                random:true
+                random:true,
+                width:3
             };
-
             var cfg = $.extend(false,cfg, config);
-
-            function getAnimationElements(){
-                return $("ul[expand-animation=true]");
-            }
-
-            function getHasExpanded(animationElement){
-                return $('li[expand=true]', animationElement);
-            }
+            var STATUS = {
+                'expanded':'expanded',
+                'unexpand':'unexpand',
+                'expanding':'expanding'
+            };
 
             function getExpandWidth(animationItem){
                 return animationItem.width();
             }
 
-            function expand(animationItem){
-                animationItem.attr("expand","true");
+            //展开对象
+            function Expander(e){
+                var no = 'expander_' +  new Date().getTime() + Math.random(100);
+                this.no = no;
+                e.attr('no', this.no);
 
-                var width = getExpandWidth(animationItem);
-                var interval = window.setInterval(function(){
-                    if(width > cfg.maxWidth){
-                        window.clearInterval(interval);
-                        animationItem.css('width', cfg.maxWidth + "px");
-                    }else{
-                        animationItem.css('width', width);
-                        width += 20;
+                var expandInterval = null,
+                        shrinkInterval = null,
+                        element = e;
+
+                //停下来吧
+                this.stop = function(){
+                    //停止收缩
+                    if(shrinkInterval != null) {
+                        window.clearInterval(shrinkInterval);
+                        shrinkInterval = null;
                     }
-                }, cfg.duration);
+
+                    //停止展开
+                    if(expandInterval != null){
+                        window.clearInterval(expandInterval);
+                        expandInterval = null;
+                    }
+                };
+
+                this.expand = function(fullExpandResponse){
+                    //停止收缩
+                    if(shrinkInterval != null) {
+                        window.clearInterval(shrinkInterval);
+                        shrinkInterval = null;
+                    }
+
+                    //开始展开
+                    var width = getExpandWidth(element);
+                    expandInterval = window.setInterval(function(){
+                        if(width+cfg.width > cfg.maxWidth){
+                            //console.log("expand:width:"+width);
+
+                            element.css('width', cfg.maxWidth + "px");
+                            window.clearInterval(expandInterval);
+                            expandInterval = null;
+
+                            if(fullExpandResponse && $.isFunction(fullExpandResponse)){
+                                fullExpandResponse("我已经完全展开!");
+                            }
+                        }else{
+                            element.css('width', width);
+                            width += cfg.width;
+                        }
+                    }, cfg.duration);
+                };
+
+                this.shrink = function(fullShrinkResponse){
+                    //停止展开
+                    if(expandInterval != null){
+                        window.clearInterval(expandInterval);
+                        expandInterval = null;
+                    }
+
+                    //开始收缩
+                    var width = getExpandWidth(element);
+                    shrinkInterval = window.setInterval(function(){
+                        if(width-cfg.width > cfg.minWidth){
+                            element.css('width', width);
+                            width -= cfg.width;
+                            //console.log("shrink:width:"+width);
+                        }else{
+                            element.css('width', cfg.minWidth + "px");
+                            window.clearInterval(shrinkInterval);
+                            shrinkInterval = null;
+
+                            if(fullShrinkResponse && $.isFunction(fullShrinkResponse)){
+                                fullShrinkResponse("我已经完全收拢!");
+                            }
+                        }
+                    }, cfg.duration);
+                };
+
+                this.getStatus = function(){
+                    var status = null;
+                    var width = getExpandWidth(element);
+
+                    if(width <= cfg.minWidth){
+                        status = STATUS.unexpand;
+                    }else if(width >= cfg.maxWidth){
+                        status = STATUS.expanded;
+                    }else{
+                        status = STATUS.expanding;
+                    }
+                    return status;
+                }
+
+                return this;
             }
 
-            function shrink(animationItem){
-                var width = getExpandWidth(animationItem);
-                var interval = window.setInterval(function(){
-                    if(width > cfg.minWidth){
-                        animationItem.css('width', width);
-                        width -= 20;
-                    }else{
-                        window.clearInterval(interval);
-                        animationItem.css('width', cfg.minWidth + "px");
-                        animationItem.removeAttr("expand");
+            function Clazz(){
+                var members = [];
+                var monitor = null;
+                var expandings = [];
+
+                //为班级增加成员
+                this.addExpander = function(e){
+                   var expander = new Expander(e);
+                    members.push(expander);
+                }
+
+                //为本班分配一个班长
+                this.assignMonitor = function(monitor){
+                    this.monitor = monitor;
+                }
+
+                this.getExpander = function(e){
+
+                    var expander = null;
+                    for(var i=0;i<members.length;i++){
+                        var m = members[i];
+
+                        if(m.no == e.attr("no")){
+                            expander = m;
+                            break;
+                        }
                     }
-                }, cfg.duration);
+                    return expander;
+
+                };
+
+                //一个一个收缩
+                var _oneByOneShrink = function(){
+                    //一个一个执行是有问题的。
+                    var expander = expandings.pop();
+
+                    if(expander != null){
+                        expander.shrink(function(msg){
+                            console.log(msg);
+
+                            _oneByOneShrink();
+                        });
+                    }
+                };
+
+                var stopAll = function(){
+                    for(var i=0;i<expandings.length;i++){
+                        var expander = expandings[i];
+
+                        expander.stop();
+                    }
+                };
+
+                this.oneByOneShrink = function(){
+                    stopAll();//大家不要动
+                    expandings = [];
+
+                    for(var i=0;i<members.length;i++){
+                        var expander = members[i];
+                        var status = expander.getStatus();
+
+                        if(status == STATUS.expanding || status == STATUS.expanded){
+                            expander.stop();
+                            expandings.push(expander);
+                        }
+                    }
+
+                    _oneByOneShrink();
+                }
+
+                this.getMembers = function(){
+                    return members;
+                }
+
+                return this;
+            }
+
+            //班长，协调展开对象开展工作
+            //clazz，给班长分配的班级
+            function Monitor(clazz){
+
+                //上级给班长下达执行命令
+                this.expand = function(expander){
+                    clazz.oneByOneShrink();
+                    expander.expand();
+                }
+
+                var _freeArrange = function(){
+                    var members = clazz.getMembers();
+                    var count = members.length;
+                    var index = parseInt(count * Math.random());
+                    console.log(index);
+
+                    clazz.oneByOneShrink();
+                    members[index].expand(function(msg){
+                        console.log(msg);
+
+                        var t = window.setTimeout(function(){
+                            _freeArrange();
+                            window.clearTimeout(t);
+                        }, 2000);
+                    });
+                }
+
+                this.freeArrange = function(){
+                    _freeArrange();
+                }
+
             }
 
             return {
-                play:function(){
-                    getAnimationElements().each(function(){
-                        var animationElement = $(this);
+                play:function(animationElement){
+                    var clazz = new Clazz();
+                    var monitor = new Monitor(clazz);
 
-                        $('>li', animationElement).each(function(){
-                            var animationItem = $(this);
+                    $('>li', animationElement).each(function(){
+                        var animationItem = $(this);
+                        clazz.addExpander(animationItem);
 
-                            animationItem.click(function(){
-                                getHasExpanded(animationElement).each(function(){shrink($(this))});
-                                expand($(this));
-                                flag = true;
-                            });
+                        /*
+                        animationItem.mouseover(function(){
+                            var o = $(this);
+                            var expander = clazz.getExpander(o);
+
+                            if(expander != null)
+                                monitor.expand(expander);
                         });
+                        */
                     });
+
+                    monitor.freeArrange();
                 },
                 stop:function(){}
             };
@@ -92,9 +271,10 @@
                 }
             });
 
-            animation.play();
+            $('*[expand-animation="true"]').each(function(){
+                animation.play($(this));
+            });
         });
-
 
     </script>
 
@@ -153,7 +333,7 @@
     <h1>个性主题</h1><span><a href="">更多</a></span>
 </div>
 <ul class="topic-special-content" expand-animation="true">
-    <li class="active" expand="true"><a href=""><img src="images/index/special01.png"></a></li>
+    <li class="active"><a href=""><img src="images/index/special01.png"></a></li>
     <li></li>
     <li></li>
     <li></li>

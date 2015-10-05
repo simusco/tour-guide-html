@@ -377,7 +377,7 @@ b {
 }
 .route-wraper-content-left .img-nav .img-nav-left-btn a, .route-wraper-content-left .img-nav .img-nav-right-btn a {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 66px;
 }
 .route-wraper-content-left .img-nav .img-nav-left-btn {
@@ -396,7 +396,7 @@ b {
 }
 .route-wraper-content-left .img-nav .image-nav-btn {
   *zoom: 1;
-  margin-left: 24px;
+  margin-left: 22px;
   overflow: hidden;
   position: relative;
   width: 500px;
@@ -436,7 +436,7 @@ b {
   margin-bottom: 20px;
 }
 .route-wraper-content-right .right-content-top h1 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 36px;
 }
@@ -468,8 +468,8 @@ b {
   border-radius: 3px;
   margin: 0px 5px;
   padding: 0px 10px;
-  line-height: 24px;
-  height: 24px;
+  line-height: 22px;
+  height: 22px;
   background-color: #fe3000;
   color: #ffffff;
   font-weight: bold;
@@ -522,7 +522,7 @@ b {
 }
 .ticket-group-content ul.ticket li.ticket-name h2 {
   font-size: 18px;
-  line-height: 24px;
+  line-height: 22px;
 }
 .ticket-group-content ul.ticket li.ticket-name p {
   font-size: 14px;
@@ -531,7 +531,7 @@ b {
 }
 .ticket-group-content ul.ticket li.ticket-price {
   width: 10%;
-  font-size: 24px;
+  font-size: 22px;
   color: #fe3000;
   font-weight: 700;
 }

@@ -57,7 +57,7 @@
           z-index: 10;
           a{
             display: block;
-            width: 24px;
+            width: 22px;
             height: 66px;
           }
         }
@@ -80,7 +80,7 @@
 
         .image-nav-btn{
           @include pie-clearfix();
-          margin-left: 24px;
+          margin-left: 22px;
           overflow: hidden;
           position: relative;
           width: 500px;
@@ -124,7 +124,7 @@
         margin-bottom: 20px;
 
         h1{
-          font-size: 24px;
+          font-size: 22px;
           font-weight: 700;
           line-height: 36px;
         }
@@ -150,8 +150,8 @@
             @include border-radius(3px);
             margin: 0px 5px;
             padding: 0px 10px;
-            line-height: 24px;
-            height: 24px;
+            line-height: 22px;
+            height: 22px;
             background-color: #fe3000;
             color: #ffffff;
             font-weight: bold;
@@ -214,7 +214,7 @@
 
           h2{
             font-size: 18px;
-            line-height: 24px;
+            line-height: 22px;
           }
 
           p{
@@ -226,7 +226,7 @@
 
         &.ticket-price{
           width: 10%;
-          font-size: 24px;
+          font-size: 22px;
           color: #fe3000;
           font-weight: 700;
         }
